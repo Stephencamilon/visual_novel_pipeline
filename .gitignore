@@ -1,0 +1,75 @@
+# ------------------------------
+# PYTHON / JUPYTER
+# ------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+.env
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.DS_Store
+
+# ------------------------------
+# DATA FILES
+# ------------------------------
+# raw and processed data (keep the folder, ignore the contents)
+data/raw/*
+data/clean/*
+!data/raw/.gitkeep
+!data/clean/.gitkeep
+
+# large JSON or CSV exports
+*.csv
+*.json
+*.xlsx
+*.parquet
+
+# ------------------------------
+# NOTEBOOK OUTPUTS
+# ------------------------------
+*.nbconvert.ipynb
+*.ipynb~
+
+# ------------------------------
+# IDE / EDITOR FILES
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# LOGS / TEMP / CACHE
+# ------------------------------
+logs/
+*.log
+tmp/
+cache/
+__temp__/
+
+# ------------------------------
+# OS-SPECIFIC
+# ------------------------------
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ------------------------------
+# VIRTUAL ENVIRONMENT / PIP
+# ------------------------------
+pip-wheel-metadata/
+*.whl
+
+# ------------------------------
+# POWER BI / DASHBOARDS / OUTPUT
+# ------------------------------
+*.pbix
+*.pbip
+dashboard/__pycache__/
+dashboard/output/
+dashboard/*.log
