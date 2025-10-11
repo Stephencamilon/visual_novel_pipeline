@@ -26,6 +26,11 @@ def transform_vn_data():
 
     # 3️⃣ Create DataFrame
     df = pd.DataFrame(vn_list)
+    
+    # Reorder columns: id, title, description first
+    first_cols = ["id", "title", "description"]
+    other_cols = [col for col in df.columns if col not in first_cols]
+    df = df[first_cols + other_cols]
 
     # 4️⃣ Clean data
     # Replace empty strings with NaN
