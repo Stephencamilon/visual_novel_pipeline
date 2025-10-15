@@ -58,9 +58,11 @@ def visualize_vn_data():
     yearly = df[(df["year"] >= 2010) & (df["year"] <= 2020)].copy()
     top_per_year = yearly.sort_values(['year', 'rating'], ascending=[True, False]).groupby('year').first().reset_index()
 
-    plt.figure(figsize=(10, 6))
-    plt.barh(top_per_year["year"].astype(str), top_per_year["rating"], color="teal")
-    plt.yticks(top_per_year["year"].astype(str))
+    # Create labels like "2011: VN Title"
+    top_per_year["label"] = top_per_year["year"].astype(str) + ": " + top_per_year["title"]
+
+    plt.figure(figsize=(12, 7))
+    plt.barh(top_per_year["label"], top_per_year["rating"], color="teal")
     plt.xlabel("Rating")
     plt.title("Top Visual Novel by Rating Per Year (2010-2020)")
     plt.tight_layout()
