@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import ast
 
 def visualize_vn_data():
     data_path = "data/clean/visual_novels_clean.csv"
@@ -67,6 +68,27 @@ def visualize_vn_data():
     plt.title("Top Visual Novel by Rating Per Year (2010-2020)")
     plt.tight_layout()
     plt.show()
+    
+    # --- Top 10 Genres by Tag Name ---
+    def extract_tag_names(tag_str):
+        try:
+            tags = ast.literal_eval(tag_str)
+            return [tag.get("name") for tag in tags if isinstance(tag, dict)]
+        except Exception:
+            return []
+
+    df["tag_names"] = df["tags"].dropna().apply(extract_tag_names)
+    all_tag_names = df["tag_names"].explode()
+    top_genres = all_tag_names.value_counts().head(10)
+
+    plt.figure(figsize=(9, 5))
+    top_genres.plot(kind="bar", color="slateblue")
+    plt.title("Top 10 Genres (Tag Names) in Visual Novel Database")
+    plt.ylabel("Count")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+    
 
 if __name__ == "__main__":
     visualize_vn_data()
